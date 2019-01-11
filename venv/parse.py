@@ -28,7 +28,8 @@ for key in wb.get_sheet_names():
         buff_dict = {}
         stat_dict = []
         for j in range(wb.get_sheet_by_name(key).min_column + 2, wb.get_sheet_by_name(key).max_column):
-            stat_dict.append(wb.get_sheet_by_name(key).cell(row=i, column=j).value)
+            stat_dict.append({'date':wb.get_sheet_by_name(key).cell(row=wb.get_sheet_by_name(key).min_row, column=j).value,
+                              'count':wb.get_sheet_by_name(key).cell(row=i, column=j).value})
         buff_dict[ll[key][0]] = wb.get_sheet_by_name(key).cell(row=i, column=1).value
         buff_dict[ll[key][1]] = wb.get_sheet_by_name(key).cell(row=i, column=2).value
         buff_dict[ll[key][2]] = stat_dict
